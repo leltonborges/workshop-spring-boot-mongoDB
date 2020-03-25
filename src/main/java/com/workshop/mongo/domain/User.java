@@ -2,12 +2,19 @@ package com.workshop.mongo.domain;
 
 import java.io.Serializable;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+//na annotation Document usa-ser o collection quando o nome da coleção é diferente da class
 //Se quiser converte os arquivos em bytes, para trafegar em redes, em arquivos usa-se Serializable
+@Document(collection = "user")
 public class User implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
+	@Id
 	private String id;
+	
 	private String name;
 	private String email;
 	
