@@ -1,23 +1,29 @@
 package com.workshop.mongo.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 //na annotation Document usa-ser o collection quando o nome da coleção é diferente da class
 //Se quiser converte os arquivos em bytes, para trafegar em redes, em arquivos usa-se Serializable
 @Document(collection = "user")
-public class User implements Serializable{
-	
+public class User implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private String id;
-	
+
 	private String name;
 	private String email;
-	
+
+	@DBRef(lazy = true)
+	private List<Post> posts = new ArrayList<>();
+
 	public User() {
 	}
 
@@ -49,6 +55,14 @@ public class User implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> p) {
+		this.posts = p;
 	}
 
 	@Override
