@@ -23,7 +23,7 @@ public class Post implements Serializable{
 	private String body;
 	private AuthorDTO author;
 	
-	private List<CommentDTO> commensts = new ArrayList<>();
+	private List<CommentDTO> comments = new ArrayList<>();
 	
 	public Post() {
 		
@@ -79,11 +79,11 @@ public class Post implements Serializable{
 
 
 	public List<CommentDTO> getCommensts() {
-		return commensts;
+		return comments;
 	}
 
 	public void setCommensts(List<CommentDTO> commensts) {
-		this.commensts = commensts;
+		this.comments = commensts;
 	}
 
 	@Override
